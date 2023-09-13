@@ -1,8 +1,10 @@
-const NUMBEROFELEMENTS = 200;
+var numberOfElements = 100;
 var list;
 var sorted = false;
 var timeSorting = 0;
 var showTime = false;
+var numberOfElementsSlider;
+var frameCountSlider;
 
 function setup() 
 {
@@ -10,28 +12,42 @@ function setup()
 	stroke(255);
 	noFill();
 	list = createList();
-	frameRate(20);
+	frameRate(200);
 	
 	var randomizeButton = createButton("Randomize");
 	randomizeButton.mousePressed(newList);
+
+	numberOfElementsSlider = createSlider(50, 5000, numberOfElements, 1);
+	frameCountSlider = createSlider(1, 500, 60, 1);
+	
+}
+
+
+
+function draw()
+{
+
+	strokeWeight(1);
+	background(25);
+
+	getSliderValues();
+	bubbleSort(list);
+	showBars(list);
+	
+	setTime();
+	
+	
 }
 
 function newList() {
 	list = createList();
 }
 
-function draw()
-{
-	strokeWeight(1);
+function getSliderValues() {
+	numberOfElements = numberOfElementsSlider.value();
+	numberOfElementsSlider.changed(newList);
 
-	background(25);
-	
-	bubbleSort(list);
-	showBars(list);
-
-	setTime();
-
-	
+	frameRate(frameCountSlider.value());
 }
 
 function bubbleSort(list) {
@@ -78,7 +94,7 @@ function showTimeText() {
 
 function createList() {
 	var list = [];
-	for (var i = 0; i < NUMBEROFELEMENTS; i++) {
+	for (var i = 0; i < numberOfElements; i++) {
 		list[i] = random(height);
 	}
 	return list;
@@ -87,7 +103,7 @@ function createList() {
 function showBars(values) {
 	getBarColor();
 	push();
-		translate(10, height);
+		translate(0, height);
 		for (var i = 0; i < values.length; i++) {
 			var x = width /values.length * i;
 			var y = values[i];
