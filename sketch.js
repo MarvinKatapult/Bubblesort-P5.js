@@ -1,8 +1,6 @@
 var numberOfElements = 100;
 var list;
 var sorted = false;
-var timeSorting = 0;
-var showTime = false;
 var numberOfElementsSlider;
 var frameCountSlider;
 
@@ -36,7 +34,6 @@ function draw()
 	
 	setTime();
 	
-	
 }
 
 function newList() {
@@ -67,16 +64,8 @@ function bubbleSort(list) {
 	if (sorted == true) onSolved();
 }
 
-function setTime() {
-	if (frameCount % frameCountSlider.value() == 0 && sorted == false) {
-		timeSorting += 1;
-	}
-}
 
 function onSolved() {
-	showTime = true;
-	
-	showTimeText();
 	showMedianLine();
 }
 
@@ -86,11 +75,6 @@ function showMedianLine() {
 	line(0, height, width, 0);
 }
 
-function showTimeText() {
-	textSize(22);
-	stroke(255);
-	text("Time: " + timeSorting + "s", 50, 50);
-}
 
 function createList() {
 	timeSorting = 0;
