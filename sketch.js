@@ -68,7 +68,7 @@ function bubbleSort(list) {
 }
 
 function setTime() {
-	if (frameCount % 10 == 0 && sorted == false) {
+	if (frameCount % frameCountSlider.value() == 0 && sorted == false) {
 		timeSorting += 1;
 	}
 }
@@ -93,6 +93,7 @@ function showTimeText() {
 }
 
 function createList() {
+	timeSorting = 0;
 	var list = [];
 	for (var i = 0; i < numberOfElements; i++) {
 		list[i] = random(height);
