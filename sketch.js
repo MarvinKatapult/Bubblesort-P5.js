@@ -15,8 +15,8 @@ function setup()
 	var randomizeButton = createButton("Randomize");
 	randomizeButton.mousePressed(newList);
 
-	numberOfElementsSlider = createSlider(50, 5000, numberOfElements, 1);
-	frameCountSlider = createSlider(1, 500, 60, 1);
+	numberOfElementsSlider = createSlider(10, 5000, numberOfElements, 1);
+	frameCountSlider = createSlider(1, 60, 60, 1);
 	
 }
 
@@ -31,9 +31,8 @@ function draw()
 	getSliderValues();
 	bubbleSort(list);
 	showBars(list);
-	
-	setTime();
-	
+
+	showText();
 }
 
 function newList() {
@@ -69,6 +68,13 @@ function onSolved() {
 	showMedianLine();
 }
 
+function showText() {
+	stroke(255);
+	textSize(20);
+	text(numberOfElements + " elements in list", 50, 50);
+	text(floor(frameCountSlider.value()) + " iterations per second", 50, 100);
+}
+
 function showMedianLine() {
 	strokeWeight(0.5);
 	stroke(255, 0, 0);
@@ -88,7 +94,7 @@ function createList() {
 function showBars(values) {
 	getBarColor();
 	push();
-		translate(0, height);
+		translate(5, height);
 		for (var i = 0; i < values.length; i++) {
 			var x = width /values.length * i;
 			var y = values[i];
