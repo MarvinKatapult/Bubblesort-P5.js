@@ -50,7 +50,7 @@ function bubbleSort(list) {
 	sorted = true;
 	for (var i = 0; i < list.length-1; i++) {
 		if (list[i] > list[i+1]) {
-			stroke(255);
+			
 			var temp = list[i];
 			list[i] = list[i+1];
 			list[i+1] = temp;
@@ -106,5 +106,5 @@ function showBars(values) {
 
 function getBarColor() {
 	if (sorted == true)  stroke(0, 255, 0);
-	if (sorted == false) stroke(255);
+	if (sorted == false) stroke(255, 0, 255);
 }
