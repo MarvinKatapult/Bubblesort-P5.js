@@ -3,6 +3,7 @@ var list;
 var sorted = false;
 var numberOfElementsSlider;
 var frameCountSlider;
+var iterations = 1;
 
 function setup() 
 {
@@ -21,7 +22,6 @@ function setup()
 }
 
 
-
 function draw()
 {
 
@@ -33,10 +33,13 @@ function draw()
 	showBars(list);
 
 	showText();
+
+	iterations++;
 }
 
 function newList() {
 	list = createList();
+	iterations = 1;
 }
 
 function getSliderValues() {
@@ -48,7 +51,7 @@ function getSliderValues() {
 
 function bubbleSort(list) {
 	sorted = true;
-	for (var i = 0; i < list.length-1; i++) {
+	for (var i = 0; i < list.length-iterations; i++) {
 		if (list[i] > list[i+1]) {
 			
 			var temp = list[i];
@@ -61,6 +64,7 @@ function bubbleSort(list) {
 	}
 
 	if (sorted == true) onSolved();
+	
 }
 
 
