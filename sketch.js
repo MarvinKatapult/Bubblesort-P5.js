@@ -18,13 +18,10 @@ function setup()
 
 	numberOfElementsSlider = createSlider(10, 5000, numberOfElements, 1);
 	frameCountSlider = createSlider(1, 60, 60, 1);
-	
 }
-
 
 function draw()
 {
-
 	strokeWeight(1);
 	background(25);
 
@@ -35,6 +32,7 @@ function draw()
 	showText();
 
 	iterations++;
+
 }
 
 function newList() {
@@ -50,23 +48,24 @@ function getSliderValues() {
 }
 
 function bubbleSort(list) {
+
 	sorted = true;
-	for (var i = 0; i < list.length-iterations; i++) {
-		if (list[i] > list[i+1]) {
-			
-			var temp = list[i];
-			list[i] = list[i+1];
-			list[i+1] = temp;
+	// for (var z = 0; z < 10; z++) {
+		for (var i = 0; i < list.length-iterations; i++) {
+			if (list[i] > list[i+1]) {
+				
+				var temp = list[i];
+				list[i] = list[i+1];
+				list[i+1] = temp;
 
-			sorted = false;
-			showTime = false;
+				sorted = false;
+				showTime = false;
+			}
 		}
-	}
 
-	if (sorted == true) onSolved();
-	
+		if (sorted == true) onSolved();
+	// }
 }
-
 
 function onSolved() {
 	showMedianLine();
@@ -84,7 +83,6 @@ function showMedianLine() {
 	stroke(255, 0, 0);
 	line(0, height, width, 0);
 }
-
 
 function createList() {
 	timeSorting = 0;
